@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login via Google | Liquacious</title>
+        <link rel="stylesheet" href="./static/font.css">
+    </head>
+    <body>
+        <p id="time" class="time"></p>
+        <script>
+          const timeElement = document.getElementById("time");
+          function updateTime() {
+              const now = new Date();
+              const date = now.getDay() + " " + now.getMonth() + " " + now.getFullYear()
+              const hours = now.getHours().toString().padStart(2, "0");
+              const minutes = now.getMinutes().toString().padStart(2, "0");
+              const seconds = now.getSeconds().toString().padStart(2, "0");
+              const timeString = hours + ":" + minutes + ":" + seconds;
+              timeElement.textContent = date + " " + timeString;
+          }
+          // Call updateTime every second (1000 milliseconds)
+          setInterval(updateTime, 1000);
+          // Initial call to display the time immediately
+          updateTime();
+        </script>
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+        <h3>Sign in to Liquacious</h3>
+        <div id="g_id_onload"
+            data-client_id="769099715181-4897ot63c1dfed22gehdhjbbcvirj8pn.apps.googleusercontent.com"
+            data-callback="handleCredentialResponse">      
+        </div>
+        <div class="g_id_signin" data-type="standard"></div>
+        <br>
+        <div id="introduction" class="groupMargin">
+            Forgotten your password? Please click <a href="https://mypw.isf.edu.hk" target="_blank">here</a>  to reset your password.                     
+        </div>
+        <div><a href="https://store.liquacious.org?storeCookie=guest@student.isf.edu.hk">Skip login process</a></div>
+        <script>
+            function getEmailFromJWT(token) {
+                // Split the JWT into its three parts
+                const parts = token.split('.');
+
+                // Decode the payload (the second part) from base64url format
+                const payload = atob(parts[1].replace(/-/g, '+').replace(/_/g, '/'));
+
+                // Parse the payload into a JavaScript object
+                const parsedPayload = JSON.parse(payload);
+
+                // Access the 'email' field
+                const email = parsedPayload.email;
+
+                return email;
+            }
+            function handleCredentialResponse(response) {
+                document.cookie = "student_email=" + getEmailFromJWT(response.credential)
+                console.log("Credential: " + getEmailFromJWT(response.credential))
+                window.location.href="https://store.liquacious.org?storeCookie=" + getEmailFromJWT(response.credential)
+            }
+        </script>          
+    </body>
+</html>

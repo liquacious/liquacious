@@ -1,0 +1,26 @@
+.banner {
+    background: linear-gradient(0deg, rgb(0, 0, 0), rgb(255, 255, 255));
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    width: 100vw;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100vh - 74px);
+}
+
+.banner-button-invis {
+    opacity: 0;
+    transition: opacity 5s ease-in-out;
+}
+
+.banner-button-invis:hover {
+    opacity: 1;
+}
+
+a {
+    text-decoration: underline;
+    cursor: pointer;
+}

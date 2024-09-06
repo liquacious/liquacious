@@ -1,0 +1,93 @@
+*{
+    --secondary-color: #FFFFFF;
+    --primary-color: #F5F8FC;
+    --primary-accent-color: #1966D2;
+    --primary-text-color: #000000;
+    --secondary-text-color: #5F6367;
+    --secondary-accent-color: #FABE1C;
+    --primary-danger-color: #FA3232;
+    font-weight: 400;
+    font-style: normal;
+}
+
+main{
+    margin-top: 74px;
+    padding: 7px;
+}
+
+/* Style for the top navbar */
+.navbar {
+    position: fixed; /* Fixed position at the top of the screen */
+    top: 0; /* Positioned at the top */
+    left: 0;
+    width: 100%; /* Full width */
+    background-color: #303338; /* Background color of the navbar */
+    border: 2px solid #1F2023;
+    height: 50px;
+    overflow: hidden;
+    display: flex; /* Display navbar items in a flex container */
+    justify-content: flex-start; /* Space between logo and links */
+    align-items: center; /* Vertically center items */
+    padding: 10px 20px; /* Padding around the navbar */
+    z-index: 1000; /* Ensure it's above other elements */
+}
+
+/* Navbar links */
+.navbar a {
+    color: white; /* Text color of the links */
+    text-align: center;
+    padding: 14px 16px; /* Padding around the links */
+    text-decoration: none;
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* On hover, the links change color */
+.navbar a:hover {
+    background-color: var(--primary-accent-color); /* Background color on hover */
+    color: var(--secondary-color); /* Text color on hover */
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .navbar a {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+}
+
+.navbar-logo {
+    color: var(--primary-text-color); /* Text color of the logo */
+    font-weight: 400;
+    text-decoration: none;
+}
+
+/* Button styles */
+.nav-button-container {
+    position: absolute;
+    top: 50px; /* Adjust the top position as needed to avoid overlapping with the navbar */
+    left: 20px; /* Adjust the left position as needed */
+}
+
+.nav-button {
+    display: inline-block;
+    text-decoration: none;
+    
+    border-radius: 10px;
+    padding: 10px; /* Padding around the button text */
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem; /* Adjust the font size as needed */
+    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+    background-color: transparent;
+}
+
+.nav-button:hover {
+    background-color: black;
+    color: var(--secondary-color);
+}
+
+.navbar a{
+    min-width: 2rem;
+    margin-left: 20px;
+    border-radius: 5px;
+    min-height: 10px;
+    transition: color,background-color 0.5s;
+}

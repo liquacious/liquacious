@@ -1,96 +1,69 @@
-<html>
-  <head>
-    <link rel="stylesheet" href="https://store.liquacious.org/static/font.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/font.css">
+    <link rel="stylesheet" href="./static/index.css">
+    <link rel="stylesheet" href="./static/navbar.css">
+    <link href="./static/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
-        .image-container {
-            display: flex;
-            justify-content: space-between; /* Space between the image links */
-            gap: 20px; /* Adjust spacing between the image links */
-            padding: 20px; /* Optional padding around the container */
-        }
-
-        .image-container a {
-            display: block; /* Ensures the anchor takes up space like a block element */
-        }
-
-        .image-container img {
-            max-width: 100%; /* Ensure images are responsive */
-            height: auto;
-            max-height: 100vh; /* Prevent images from being taller than the viewport */
-            border: 1px solid #ccc; /* Optional: adds a border around images */
-        }
-
-        .text-container {
-            display: flex;
-            justify-content: space-between; /* Space between the image links */
-            gap: 20px; /* Adjust spacing between the image links */
-            padding: 20px; /* Optional padding around the container */
-        }
-
-        .text-container p {
-            max-width: 100%; /* Ensure images are responsive */
-            height: auto;
-            max-height: 100vh; /* Prevent images from being taller than the viewport */
-            border: 1px solid #000000; /* Optional: adds a border around images */
+        .material-symbols-outlined {
+            font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
         }
     </style>
-    <style>
-      .time {
-        margin: 10px;
-      }
-      /* Three image containers (use 25% for four, and 50% for two, etc) */
-      .column {
-        float: left;
-        width: 10.33%;
-        padding: 5px;
-      }
-
-      /* Clear floats after image containers */
-      .row::after {
-        content: "";
-        clear: both;
-        display: table;
-      }
-    </style>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body style="background-color: black;">
-    <p style="color: white;" id="time" class="time"></p>
+    <title>Liquacious | Student-led newspaper </title>
+</head>
+<body>
+    <script src="./static/checkAuthorization.js"></script>
+    <div class="navbar">
+        <a href="https://liquacious.org/" class="nav-button" id="logo" data-value="Liquacious">Liquacious</a>
+        <a href="https://store.liquacious.org/">Releases</a>
+        <a href="https://liquacious.org/about">About</a>
+        <a href="https://liquacious.org/login" id="cookieDisplay">Login with Google</a>
+    </div>
+    <main>
+        <div class="banner" id="banner" style="background-color: black;">
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <h1 style="color: white">Liquacious</h1>
+            <p id="banner-subtitle" class="row" style="color: white">The best Grade 5 newspaper in the ISF Academy.</p>
+            <p id="creator-subtitle" class="row" style="color: grey;">Designed and programmed by <a href="https://github.com/imtrollmastr">Johann Lo</a>.</p>
+        </div>
+        
+    </main>
+    <script src="./static/navbar.js"></script>
+    <script src="./static/home.js"></script>
     <script>
-      const timeElement = document.getElementById("time");
-      function updateTime() {
-          const now = new Date();
-          const date = now.getDay() + " " + now.getMonth() + " " + now.getFullYear()
-          const hours = now.getHours().toString().padStart(2, "0");
-          const minutes = now.getMinutes().toString().padStart(2, "0");
-          const seconds = now.getSeconds().toString().padStart(2, "0");
-          const timeString = hours + ":" + minutes + ":" + seconds;
-          timeElement.textContent = date + " " + timeString;
-      }
-      // Call updateTime every second (1000 milliseconds)
-      setInterval(updateTime, 1000);
-      // Initial call to display the time immediately
-      updateTime();
+        const cookieDisplay = document.getElementById("cookieDisplay")
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        if (getCookie("student_email") == "") {
+            window.location.href="https://liquacious.org/login"
+        } else {
+            cookieDisplay.innerHTML = getCookie("student_email")
+        }
     </script>
-    <div><h3 style="margin: 10px; color: white;">Liquacious Library</h3></div>
-    <div class="image-container">
-      <a href="https://store.liquacious.org/cdn/liquacious_issue01.pdf"><img src="https://store.liquacious.org/cdn/issue01_cover.png" height="300" width="200" style="width:220px; height:340px;"></a>
-      <a href="https://store.liquacious.org/cdn/liquacious_issue02.pdf"><img src="https://store.liquacious.org/cdn/issue02_cover.png" height="300" width="200" style="width:220px; height:340px;"></a>
-      <a href="https://store.liquacious.org/cdn/liquacious_issue03.pdf"><img src="https://store.liquacious.org/cdn/blank.png" height="300" width="200" style="width:220px; height:340px;"></a>
-      <a href="https://store.liquacious.org/cdn/liquacious_issue03.pdf"><img src="https://store.liquacious.org/cdn/blank.png" height="300" width="200" style="width:220px; height:340px;"></a>
-      <a href="https://store.liquacious.org/cdn/liquacious_issue03.pdf"><img src="https://store.liquacious.org/cdn/blank.png" height="300" width="200" style="width:220px; height:340px;"></a>
-      <a href="https://store.liquacious.org/cdn/liquacious_issue03.pdf"><img src="https://store.liquacious.org/cdn/blank.png" height="300" width="200" style="width:220px; height:340px;"></a>
-    </div>
-    <div class="text-container">
-      <p style="color: white; text-align: center;">Issue #01</p>
-      <p style="color: white; text-align: center;">Issue #02</p>
-      <p style="color: white; text-align: center;">Issue #03</p>
-      <p style="color: white; text-align: center;">Issue #04</p>
-      <p style="color: white; text-align: center;">Issue #05</p>
-      <p style="color: white; text-align: center;">Issue #06</p>
-    </div>
-    <p style="text-align: center;">Back to Liquacious</p>
-  </body>
+</body>
 </html>
